@@ -44,10 +44,11 @@ namespace assignment2
                 email = value;
             }
         }
-
+//  College.cs doesn’t use this. It has StudentID (capital D). Compiler error! I am changing it here 
+//  from StudentId = ++s_studentIdGenerator to StudentID = ++s_studentIdGenerator; - Nabiha
         public Student(string name, string email)
         {
-            StudentId = ++s_studentIdGenerator;
+            StudentID = ++s_studentIdGenerator;
             Name = name;
             Email = email;
         }
