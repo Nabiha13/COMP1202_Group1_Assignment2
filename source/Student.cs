@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace assignment2
@@ -6,7 +6,8 @@ namespace assignment2
     [Serializable]
     internal class Student
     {
-        private int studentId;
+        
+        private int StudentID; // changing studentId to StudentID - Nabiha
         private string name;
         private string email;
 
@@ -15,11 +16,12 @@ namespace assignment2
 
         public int StudentId
         {
-            get { return studentId; }
-            private set { studentId = value; }
+            get { return StudentID; }
+            private set { StudentID = value; }
         }
 
         // Uses Course file to get list of courses
+        
         public List<Course> EnrolledCourses { get; } = new List<Course>();
 
         public string Name
@@ -44,6 +46,8 @@ namespace assignment2
                 email = value;
             }
         }
+        
+        // College.cs calls AddStudent(string name, string email) which uses this constructor - Nabiha
 
         public Student(string name, string email)
         {
@@ -51,5 +55,12 @@ namespace assignment2
             Name = name;
             Email = email;
         }
+        
+        // Optional: add DisplayInfo() if needed for menus (College.cs calls DisplayStudents()) - Nabiha 
+        public void DisplayInfo()
+        {
+            Console.WriteLine($"ID: {StudentId}, Name: {Name}, Email: {Email}, Courses Enrolled: {EnrolledCourses.Count}");
+        }
+
     }
 }
