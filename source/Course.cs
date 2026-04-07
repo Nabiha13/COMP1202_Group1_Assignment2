@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -8,7 +9,7 @@ namespace assignment2
     internal class Course
     {
         // Define parts of Course
-        private int courseId;
+        private int CourseID; // changing courseId to CourseID - Nabiha
         private string courseName;
         private int creditHours;
         private string description;
@@ -16,12 +17,24 @@ namespace assignment2
         // Generates IDs for courses, each one more than last
         private static int s_courseIdGenerator = 0;
 
+        // public int CourseId   - original Jax code
+        // {
+        //     get { return CourseId; }  // this calls itself → infinite recursion - Nabiha
+        //     private set { CourseId = value; } // same here - Nabiha
+        // }
+        
+        
+        // Nabiha - Right now, the CourseId property references itself instead of the private field CourseID.
+        // That will cause a stack overflow at runtime. You need to reference the private field CourseID instead:
         public int CourseId
         {
-            get { return courseId; }
-            private set { courseId = value; }
+            get { return CourseID; }   // use private field
+            private set { CourseID = value; } // assign to private field
         }
-
+        
+        
+        
+        // should come before constructor - Nabiha
         public List<Student> EnrolledStudents { get; } = new List<Student>();
 
         public string CourseName
@@ -58,8 +71,13 @@ namespace assignment2
             }
         }
 
+        
+        // Constructor requires description, College.cs calls AddCourse(string, int) → won’t compile. - Nabiha
+        // Changing from  public Course(string courseName, int creditHours, string description) to allow default description
+        // change to public Course(string courseName, int creditHours, string description = "No description provided")
+       
         [JsonConstructor]
-        public Course(string courseName, int creditHours, string description)
+        public Course(string courseName, int creditHours, string description = "No description provided")
         {
             CourseName = courseName;
             CreditHours = creditHours;
