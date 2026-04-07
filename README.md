@@ -139,5 +139,10 @@ public static Dictionary<ColorGroup, ConsoleColor [ ]> colorByGroup = new() {
             {ColorGroup.SystemPromptHint, [ConsoleColor.Gray, ConsoleColor.Black ] },
             {ColorGroup.SystemPromptInstructions, [ConsoleColor.Cyan, ConsoleColor.Black ] }
         };
-
+// Program.cs is the main console application for the College Course Registration System.
+//     It creates a College object to manage all students, courses, and registrations.
+//     The program displays a menu and uses a while loop to keep running until the user exits.
+//     Users can add students/courses, register students to courses, display information, and save or load data.
+//     Helper methods handle input validation and call methods in the College class.
+// This program demonstrates menu-driven functionality and integrates the 2D array registration system and file I/O.
             
